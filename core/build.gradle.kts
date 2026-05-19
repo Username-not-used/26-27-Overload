@@ -4,6 +4,11 @@ plugins {
     id("org.jetbrains.dokka")
 }
 
+repositories {
+    google()
+    mavenCentral()
+}
+
 dependencies {
     compileOnly(libs.annotations)
     dokkaPlugin(libs.dokka.java.plugin)

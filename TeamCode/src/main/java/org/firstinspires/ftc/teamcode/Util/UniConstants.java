@@ -11,11 +11,10 @@ public class UniConstants {
     public static final String RearRightMotor = "RRM";    // Con Motor 3
     public static final String PinPointOdometry = "POC";    // I2C Con Port 1
     public static final String IntakeMotor = "INM";     // Exp Motor 0
+    public static final String PollenOuttakeMotor = "POM"; // Exp Motor 1
+    public static final String NectarOuttakeMotor = "NOM"; // Exp Motor 2
+    public static final String PollenOuttakeServo = "POS"; // Exp 4
+    public static final String NectarOuttakeServo = "NOS"; // Exp 5
     public static final String LimeLight = "LLT"; //
     // --| Pathing Constants |-- \\
-
-
-    public static final Pose startPose = p.of(0, 12, 0);
-    public static final Pose park = p.of(24, 36, 90);
-
 }

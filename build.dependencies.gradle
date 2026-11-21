@@ -4,6 +4,15 @@ repositories {
     google() // Needed for androidx
 }
 
+configurations.configureEach {
+    resolutionStrategy {
+        force 'androidx.appcompat:appcompat:1.6.1'
+        force 'androidx.annotation:annotation:1.7.1'
+        force 'androidx.annotation:annotation-jvm:1.7.1'
+        force 'androidx.core:core:1.12.0'
+    }
+}
+
 dependencies {
     implementation 'org.firstinspires.ftc:Inspection:12.0.0'
     implementation 'org.firstinspires.ftc:Blocks:12.0.0'
@@ -13,9 +22,11 @@ dependencies {
     implementation 'org.firstinspires.ftc:OnBotJava:12.0.0'
     implementation 'org.firstinspires.ftc:Hardware:12.0.0'
     implementation 'org.firstinspires.ftc:FtcCommon:12.0.0'
-    implementation 'org.firstinspires.ftc:Vision:12.0.0'
-    implementation 'androidx.appcompat:appcompat:1.8.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
 
     implementation 'com.pedropathing:revhub:3.0.2'
     implementation 'com.pedropathing:tuning:1.0.3'
+    implementation 'com.pedropathing.ivy:pedro:1.1.1'
+    implementation 'dev.nextftc.v2:robot:0.3.0'
+
 }

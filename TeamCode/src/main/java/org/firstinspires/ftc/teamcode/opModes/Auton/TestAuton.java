@@ -6,7 +6,7 @@ import com.pedropathing.follower.Follower;
 
 import static org.firstinspires.ftc.teamcode.Util.UniConstants.*;
 
-import org.firstinspires.ftc.teamcode.Util.Path;
+import org.firstinspires.ftc.teamcode.Util.Pathing;
 import org.firstinspires.ftc.teamcode.pedro.Constants;
 import com.pedropathing.api.PoseFactory;
 
@@ -14,19 +14,23 @@ import com.pedropathing.ivy.Scheduler;
 import static com.pedropathing.ivy.Scheduler.schedule;
 import static com.pedropathing.ivy.pedro.PedroCommands.follow;
 
-@Autonomous
+import dev.nextftc.robot.opmode.NextAutonomous;
+
+@Autonomous(name = "testOp", group = "Testing")
 public class TestAuton extends OpMode {
     private Follower follower;
-    private final PoseFactory p = PoseFactory.radians();
+    private Pathing pathing;
     @Override
     public void init() {
         follower = Constants.create(hardwareMap);
-        follower.setPose(startPose);
+        pathing = new Pathing();
         Scheduler.reset();
     }
     @Override
     public void start() {
-        schedule(follow(follower, Path.Park()));
+        follower.setPose(pathing.start);
+        schedule(follow(follower, pathing.path1()));
+        schedule(follow(follower, pathing.path2()));
     }
     @Override
     public void loop() {
@@ -36,4 +40,5 @@ public class TestAuton extends OpMode {
         telemetry.addData("Y: ", follower.pose().y());
         telemetry.addData("Heading", Math.toDegrees(follower.pose().heading()));
     }
+
 }

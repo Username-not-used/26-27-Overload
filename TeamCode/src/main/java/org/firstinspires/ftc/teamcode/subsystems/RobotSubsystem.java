@@ -10,6 +10,7 @@ import com.pedropathing.ivy.commands.Commands;
 import org.firstinspires.ftc.teamcode.subsystems.Innards.Intake;
 import org.firstinspires.ftc.teamcode.subsystems.Outtake.NectarLever;
 import org.firstinspires.ftc.teamcode.subsystems.Outtake.NectarOuttake;
+import org.firstinspires.ftc.teamcode.subsystems.Outtake.Outtake;
 import org.firstinspires.ftc.teamcode.subsystems.Outtake.PollenLever;
 import org.firstinspires.ftc.teamcode.subsystems.Outtake.PollenOuttake;
 
@@ -20,11 +21,8 @@ import dev.nextftc.robot.NextRobot;
 
 public class RobotSubsystem implements NextRobot {
     public Intake intake = new Intake();
-    public NectarOuttake nOuttake = new NectarOuttake();
-    public PollenOuttake pOuttake = new PollenOuttake();
-    public NectarLever nLever = new NectarLever();
-    public PollenLever pLever = new PollenLever();
+    public Outtake outtake = new Outtake();
     @NonNull
     @Override
-    public Set<Mechanism> getMechanisms() { return Set.of(intake, nOuttake, pOuttake, nLever, pLever); }
+    public Set<Mechanism> getMechanisms() { return Set.of(intake, outtake); }
 }

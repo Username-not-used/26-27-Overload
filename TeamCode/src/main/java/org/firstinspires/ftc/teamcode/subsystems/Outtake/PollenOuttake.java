@@ -6,7 +6,7 @@ import org.firstinspires.ftc.teamcode.Util.UniConstants;
 import dev.nextftc.robot.Mechanism;
 import dev.nextftc.hardware.actuators.NextMotor;
 public class PollenOuttake implements Mechanism {
-    private NextMotor motor = new NextMotor(UniConstants.PollenOuttakeMotor);
+    private final NextMotor motor = new NextMotor(UniConstants.PollenOuttakeMotor);
     private double power = 0.5;
     public Command on() {
         return infinite(() -> motor.setThrottle(power)).setEnd(interrupted -> motor.setThrottle(0));

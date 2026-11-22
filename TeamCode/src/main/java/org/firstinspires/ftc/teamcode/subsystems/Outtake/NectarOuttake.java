@@ -8,7 +8,7 @@ import dev.nextftc.hardware.actuators.NextMotor;
 import dev.nextftc.robot.Mechanism;
 
 public class NectarOuttake implements Mechanism {
-    private NextMotor motor = new NextMotor(UniConstants.NectarOuttakeMotor);
+    private final NextMotor motor = new NextMotor(UniConstants.NectarOuttakeMotor);
     private double power = 0.5;
     public Command on() {
         return infinite(() -> motor.setThrottle(power)).setEnd(interrupted -> motor.setThrottle(0));

@@ -10,7 +10,7 @@ import dev.nextftc.hardware.actuators.NextServo;
 import dev.nextftc.robot.Mechanism;
 
 public class NectarLever implements Mechanism {
-    private NextServo servo = new NextServo(UniConstants.NectarOuttakeServo);
+    private final NextServo servo = new NextServo(UniConstants.NectarOuttakeServo);
     public Command on() {
         return infinite(() -> servo.setPosition(0.5)).setEnd(interrupted -> servo.setPosition(0));
     }

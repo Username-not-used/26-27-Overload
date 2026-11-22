@@ -10,7 +10,7 @@ import dev.nextftc.hardware.actuators.NextServo;
 import dev.nextftc.robot.Mechanism;
 
 public class PollenLever implements Mechanism {
-    private NextServo servo = new NextServo(UniConstants.PollenOuttakeServo);
+    private final NextServo servo = new NextServo(UniConstants.PollenOuttakeServo);
     public Command on() {
         return infinite(() -> servo.setPosition(0.5)).setEnd(interrupted -> servo.setPosition(0));
     }

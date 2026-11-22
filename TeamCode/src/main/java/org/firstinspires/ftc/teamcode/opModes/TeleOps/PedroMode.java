@@ -48,29 +48,23 @@ public class PedroMode extends NextOpMode {
         pathing = new Pathing();
         follower.setPose(pathing.start);
         gp1.a().toggleOnTrue(robot.intake.on());
-        gp1.rightBumper().toggleOnTrue(robot.nOuttake.on());
-        gp1.leftBumper().toggleOnTrue(robot.pOuttake.on());
-        Command shoot = parallel(
-            robot.nOuttake.on(),
-                robot.pOuttake.on(),
-                robot.nLever.on(),
-                robot.pLever.on()
-        );
-        gp1.y().toggleOnTrue(shoot);
+        gp1.rightBumper().toggleOnTrue(robot.outtake.outtakesOn());
+        gp1.leftBumper().toggleOnTrue(robot.outtake.openLever());
+        gp1.y().toggleOnTrue(robot.outtake.shoot());
         gp1.b().toggleOnTrue(robot.intake.reverseTake());
-        robot.nOuttake.reverseMotor();
-        robot.pOuttake.reverseMotor();
+        robot.outtake.nOuttake.reverseMotor();
+        robot.outtake.pOuttake.reverseMotor();
         //gp1.b().onTrue(instant(()-> follower.setPose(pathing.start)));
     }
     @Override
     public void periodic() {
         if(gamepad1.dpadUpWasPressed()) {
-            robot.nOuttake.increasePower();
-            robot.pOuttake.increasePower();
+            robot.outtake.nOuttake.increasePower();
+            robot.outtake.pOuttake.increasePower();
         }
         if(gamepad1.dpadDownWasPressed()) {
-            robot.nOuttake.decreasePower();
-            robot.pOuttake.decreasePower();
+            robot.outtake.nOuttake.decreasePower();
+            robot.outtake.pOuttake.decreasePower();
         }
         /*DrivePowers powers = ManualDrive.fieldCentric(
                 -gamepad1.left_stick_y,
@@ -86,7 +80,7 @@ public class PedroMode extends NextOpMode {
         telemetry.addData("X: ", follower.pose().x());
         telemetry.addData("Y: ", follower.pose().y());
         telemetry.addData("Heading", Math.toDegrees(follower.pose().heading()));
-        telemetry.addData("Outtake Power: ", robot.nOuttake.getPower());
+        telemetry.addData("Outtake Power: ", robot.outtake.nOuttake.getPower());
     }
 
 
